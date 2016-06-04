@@ -1,87 +1,88 @@
-<!DOCTYPE html>
-<html>
+﻿<!DOCTYPE html>
+<html lang="en">
 <head>
-<style type='text/css'>
-<!--
- .color{
-	background-color:#3366FF;
-	border-color:#330066;
- }
--->
-</style>
+	<meta charset="UTF-8">
+	<title>write</title>
 </head>
 <body>
-<table border="1" style="width:100% height:100%">
-<caption>Board</caption>
-  <tr>
-    <th><input type='button' class='color'></th>
-    <th><input type='button' onclick='this.style.backgroundColor='gray'></th>		
-    <th><input type='button' onclick='this.style.backgroundColor='gray'></th>
-    <th></th>
-    <th><input type='button' onclick='this.style.backgroundColor='gray'></th>
-    <th><input type='button' onclick='this.style.backgroundColor='gray'></th>
-    <th><input type='button' onclick='this.style.backgroundColor='gray'></th>
-  </tr>
-  
-  <tr>
-    <th><input type='button' onclick='this.style.backgroundColor='gray'></th>
-    <th><input type='button' onclick='this.style.backgroundColor='gray'></th>	
-    <th></th>
-    <th></th>
-    <th></th>
-    <th><input type='button' onclick='this.style.backgroundColor='gray'></th>
-    <th><input type='button' onclick='this.style.backgroundColor='gray'></th>
-  </tr>
-  
-  <tr>
-    <th><input type='button' onclick='this.style.backgroundColor='gray'></th>
-    <th></th>		
-    <th><input type='button' onclick='this.style.backgroundColor='gray'></th>
-    <th></th>
-    <th><input type='button' onclick='this.style.backgroundColor='gray'></th>
-    <th></th>
-    <th><input type='button' onclick='this.style.backgroundColor='gray'></th>
-  </tr>
-  
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th><input type='button' onclick='this.style.backgroundColor='gray'></th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-  
-  <tr>
-    <th><input type='button' onclick='this.style.backgroundColor='gray'></th>
-    <th></th>		
-    <th><input type='button' onclick='this.style.backgroundColor='gray'></th>
-    <th></th>
-    <th><input type='button' onclick='this.style.backgroundColor='gray'></th>
-    <th></th>
-    <th><input type='button' onclick='this.style.backgroundColor='gray'></th>
-  </tr>
-  
-  <tr>
-    <th><input type='button' onclick='this.style.backgroundColor='gray'></th>
-    <th><input type='button' onclick='this.style.backgroundColor='gray'></th>		
-    <th></th>
-    <th></th>
-    <th></th>
-    <th><input type='button' onclick='this.style.backgroundColor='gray'></th>
-    <th><input type='button' onclick='this.style.backgroundColor='gray'></th>
-  </tr>
 
-  <tr>
-    <th><input type='button' onclick='this.style.backgroundColor='gray'></th>
-    <th><input type='button' onclick='this.style.backgroundColor='gray'></th>		
-    <th><input type='button' onclick='this.style.backgroundColor='gray'></th>
-    <th></th>
-    <th><input type='button' onclick='this.style.backgroundColor='gray'></th>
-    <th><input type='button' onclick='this.style.backgroundColor='gray'></th>
-    <th><input type='button' onclick='this.style.backgroundColor='gray'></th>
-  </tr>
+<table border="5" bordercolor="#01DF01" bgcolor="#DCDCDC">
+<tr>
+<th>' ★ '</th>
+<th>'p1x1'</th>
+<th>' ★ '</th>
+<th>' →'</th>
+<th>' ★ '</th>
+<th>' ★ '</th>
+<th>' ★ '</th>
+</tr>
+
+<tr>
+<th>' ★ '</th>
+<th>' ★ '</th>
+<th>' X '</th>
+<th>' X '</th>
+<th>' X '</th>
+<th>' ★ '</th>
+<th>' ★ '</th>
+</tr>
+
+<tr>
+<th>' ★ '</th>
+<th>' X '</th>
+<th>' ★ '</th>
+<th>' X '</th>
+<th>' ★ '</th>
+<th>' X '</th>
+<th>' ★ '</th>
+</tr>
+
+<tr>
+<th>' ↑ '</th>
+<th>' X '</th>
+<th>' X '</th>
+<th>' ★ '</th>
+<th>' X '</th>
+<th>' X '</th>
+<th>' ↓ '</th>
+</tr>
+
+<tr>
+<th>' ★ '</th>
+<th>' X '</th>
+<th>' ★ '</th>
+<th>' X '</th>
+<th>' ★ '</th>
+<th>' X '</th>
+<th>' ★ '</th>
+</tr>
+
+<tr>
+<th>' ★ '</th>
+<th>' ★ '</th>
+<th>' X '</th>
+<th>' X '</th>
+<th>' X '</th>
+<th>' ★ '</th>
+<th>' ★ '</th>
+</tr>
+
+<tr>
+<th>' ★ '</th>
+<th>' ★ '</th>
+<th>' ★ '</th>
+<th>' ← '</th>
+<th>' ★ '</th>
+<th>' ★ '</th>
+<th>' ★ '</th>
+</tr>
+
 </table>
+<div>a팀의 남은말 : </div>
+<div>b팀의 남은말 : </div>
+<div>a팀의 완주 한 말 : </div>
+<div>b팀의 완주한 말 : </div>
+<input type="button" value="throw" onclick="location='http://127.0.0.1:8000/game/'"> 
+
 </body>
 </html>
