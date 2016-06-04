@@ -1,64 +1,73 @@
 from django.shortcuts import get_object_or_404, render, render_to_response
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, HttpRequest
 from django.core.urlresolvers import reverse
 from django.views import generic
+import time
 
-from .models import Player
+from .models import Player, Board
 from .forms import SignUpForm
 
 # Create your views here.
 def IndexView(request):
-    title = '윷놀이'
-    print(request, Player.objects.values())
-    form = SignUpForm(request.POST or None)
-    context = {
-        'title': title,
-        'form': form,
-    }
-
-    if form.is_valid():
-        instance = form.save(commit=False)
-        nickname = form.clean_nickname()
-        instance.nickname = nickname
-        instance.save()
-        board = BoardView()
-        return board
-        
-    return render(request,'index.html', context)
-
-class BoardView(generic.View):
-    
-    model = None
-    template_name = 'board.html'
-
-    def get(self):
-        route1 = [{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}]
-        route2 = [{},{},{},{},{},{},{},{},{},{},{},{}]
-        route3 = [{},{},{},{},{},{},{}]
+    online = request.session.get('online',False)
+    if not online:
+        form = SignUpForm(request.POST or None)
         context = {
-            'route1': route1,
-            'route2': route2,
-            'route3': route3,
+            'form': form,
         }
+        
+        if form.is_valid():
+            instance = form.save(commit=False)
+            nickname = form.clean_nickname()
+            instance.nickname = nickname
+            instance.online = True
+            request.session['online'] = True
+            instance.save()
+            
+        return render(request,'index.html', context)
+        
+    else:
+        if request.session.get('board'):
+            return BoardView(request)
+        else:
+            return Waiting(request)
 
-        return render_to_response(context)
 
+def BoardView(request):
+    model = Board
+    template_name = 'board.html'
+    route1 = [{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}]
+    route2 = [{},{},{},{},{},{},{},{},{},{},{},{}]
+    route3 = [{},{},{},{},{},{},{}]
 
+    context = {
+        'route1': route1,
+        'route2': route2,
+        'route3': route3,
+    }
+    
+    return render(request, template_name, context)
+    
+def Waiting(request):
+    waiters = Player.objects.filter(online=True, board=-1)   
+    if len(waiters)>=2:
+        b = Board()
+        b.save(commit=False)
+        b.P1 = waiters[0]['id']
+        b.P2 = waiters[1]['id']
+        b.save()
+        id = b.id
+        waiters[0]['board'] = id
+        waiters[1]['board'] = id
+        
+        return BoardView(request)
+    else:
+        time.sleep(3)
+        return Waiting(request)
 
-
-
-
-
-class board:
-  def __init__(self):
-    self.route1 = [{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}]
-    self.route2 = [{},{},{},{},{},{},{},{},{},{},{},{}]
-    self.route3 = [{},{},{},{},{},{},{}]
-
-  def newstart(self,player,d,waiting):
-    if(waiting==0):
-        print("남은 말이 없으므로 go로 갑니다!")
-        return self.go(player,d)
+def newstart(request, d):
+    if request.session['waiting']==0:
+        return go(request, player, d)
    
     select = int(input("어떤것을 사용하실건가요? : "))
     if(select==-1):
@@ -72,6 +81,11 @@ class board:
     self.check(player)
     
     return 1
+
+
+
+
+class board:
   def go(self,player,d):
     select = int(input("어떤것을 사용하실건가요? : "))
     select_unit_route=int(input("어떤 말을 사용하실건가요?(루트입력) : "))
@@ -169,12 +183,5 @@ class board:
     
 
   def mapp(self):
-    print(self.route1[20],self.route1[1], self.route1[2],'\t', self.route1[3], self.route1[4], self.route2[0] )
-    print(self.route1[19],' ',self.route3[5],'\t ',self.route2[1],' ',self.route1[6])
-    print(self.route1[18],'   ',self.route3[4],'     ',self.route2[2],'   ',self.route1[7])
-    print(' \t  ',self.route3[3],'\t      ')
-    print(self.route1[17],'   ',self.route2[4],'     ',self.route3[2],'   ',self.route1[8])
-    print(self.route1[16],' ',self.route2[5],'\t ',self.route3[1],' ',self.route1[9])
-    print(self.route1[15],self.route1[14],self.route1[13],'\t',self.route1[12],self.route1[11],self.route3[0])
     
     None
