@@ -1,0 +1,78 @@
+<table bgcolor="green" width="1500" height="700" align="center" valign="middle">
+<form action='' method='POST'>{% csrf_token %}
+	{% if turn == 1 %} <th bgcolor='yellow' colspan='8' rowspan='8' width="50" height="700"></th>
+	{% else %} <th bgcolor='white' colspan='8' rowspan='8' width="50" height="700"></th>
+	{% endif %}
+	
+	  <tr>
+		<th>{{ route1.20 }}</th>
+		<th>{{ route1.1 }}</th>	
+		<th>{{ route1.2 }}</th>
+		<th></th>
+		<th>{{ route1.3 }}</th>
+		<th>{{ route1.4 }}</th>
+		<th>{{ route2.0 }}</th>
+	{% if turn == 2 %} <th bgcolor='yellow' colspan='8' rowspan='8' width="50" height="700"></th>
+	{% else %} <th bgcolor='white' colspan='8' rowspan='8' width="50" height="700"></th>
+	{% endif %}
+	  </tr>
+	
+	  
+	  <tr>
+		<th>{{ route1.19 }}</th>
+		<th>{{ route3.5 }}</th>
+		<th colspan='3'></th>
+		<th>{{ route2.1 }}</th>
+		<th>{{ route1.6 }}</th>
+	  </tr>
+	  
+	  <tr>
+		<th>{{ route1.18 }}</th>
+		<th></th>		
+		<th>{{ route3.4 }}</th>
+		<th></th>
+		<th>{{ route2.2 }}</th>
+		<th></th>
+		<th>{{ route1.7 }}</th>
+	  </tr>
+	  
+	  <tr>
+		<th colspan='3'></th>
+		<th>{{ route3.3 }}</th>
+		<th colspan='3'></th>
+	  </tr>
+	  
+	  <tr>
+		<th>{{ route1.17 }}</th>
+		<th></th>		
+		<th>{{ route2.4 }}</th>
+		<th></th>
+		<th>{{ route3.2 }}</th>
+		<th></th>
+		<th>{{ route1.8 }}</th>
+	  </tr>
+	  
+	  <tr>
+		<th>{{ route1.16 }}</th>
+		<th>{{ route2.5 }}</th>
+		<th colspan='3'></th>
+		<th>{{ route3.1 }}</th>
+		<th>{{ route1.9 }}</th>
+	  </tr>
+
+	  <tr>
+		<th>{{ route1.15 }}</th>
+		<th>{{ route1.14 }}</th>
+		<th>{{ route1.13 }}</th>
+		<th></th>
+		<th>{{ route1.12 }}</th>
+		<th>{{ route1.11 }}</th>
+		<th>{{ route3.0 }}</th>
+	  </tr>
+</form>
+</table>
+
+
+
+
+

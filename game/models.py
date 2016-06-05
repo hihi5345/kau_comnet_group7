@@ -11,7 +11,7 @@ class Player(models.Model):
     nickname = models.CharField(max_length=30, default='')
     online = models.BooleanField(default = False)
     
-    board = models.IntegerField(default=0)
+    board = models.IntegerField(default=-1)
     mset = models.CharField(max_length=128, default=('빽도','도','개','걸','윷','모'))
     combination = models.IntegerField(default=0)
     waiting = models.IntegerField(default=4)

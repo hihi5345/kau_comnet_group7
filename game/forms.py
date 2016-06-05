@@ -10,8 +10,11 @@ class SignUpForm(forms.ModelForm):
 
     def clean_nickname(self):
         nickname = self.cleaned_data.get('nickname')
-        if len(nickname) <=2:
+        if len(nickname) < 2:
             raise forms.ValidationError("Nickname을 2자 이상으로 입력해 주십시오.")
-        return nickname
-
-        
+        try:
+            dup_check = Player.objects.get(nickname = nickname)
+        except:
+            return nickname
+        else:
+            raise forms.ValidationError("이미 존재하는 Nickname 입니다.")

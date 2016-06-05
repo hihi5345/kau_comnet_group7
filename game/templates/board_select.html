@@ -1,6 +1,10 @@
 <table bgcolor="green" width="500" height="500" align="center" valign="middle">
 <form action='' method='POST'>{% csrf_token %}
 <caption><input type='submit' value='선택'></caption>
+	{% if turn == 1 %} <th bgcolor='yellow' colspan='8' rowspan='8' width="50" height="700"></th>
+	{% else %} <th bgcolor='white' colspan='8' rowspan='8' width="50" height="700"></th>
+	{% endif %}
+	
 	  <tr>
 		<th>{{ route1.20 }}<input type='radio' value='1.0'></th>
 		<th>{{ route1.1 }}<input type='radio' value='1.1'></th>	
@@ -9,6 +13,9 @@
 		<th>{{ route1.3 }}<input type='radio' value='1.3'></th>
 		<th>{{ route1.4 }}<input type='radio' value='1.4'></th>
 		<th>{{ route2.0 }}<input type='radio' value='2.0'></th>
+	{% if turn == 2 %} <th bgcolor='yellow' colspan='8' rowspan='8' width="50" height="700"></th>
+	{% else %} <th bgcolor='white' colspan='8' rowspan='8' width="50" height="700"></th>
+	{% endif %}
 	  </tr>
 	  
 	  <tr>
@@ -64,8 +71,6 @@
 	  </tr>
 </form>
 </table>
-
-
 
 
 
